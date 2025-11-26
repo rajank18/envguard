@@ -1,0 +1,21 @@
+{
+  "name": "envguard",
+  "version": "1.0.0",
+  "description": "Detect and block accidental secrets in code, scrub console logs, scan repo for keys.",
+  "main": "index.js",
+  "bin": {
+    "envguard-check": "./bin/check-staged.js",
+    "envguard-scan": "./bin/scan.js"
+  },
+  "scripts": {
+    "postinstall": "node ./bin/install-hooks.js"
+  },
+  "keywords": ["security", "secrets", "cli", "env", "scanner"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "glob": "^10.3.12",
+    "simple-git-hooks": "^2.9.0"
+  }
+}
