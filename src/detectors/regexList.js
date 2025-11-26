@@ -12,5 +12,6 @@ module.exports = [
 
   { name: "Private Key", regex: /-----BEGIN PRIVATE KEY-----[\s\S]*?-----END PRIVATE KEY-----/g },
 
-  { name: "Generic API Key", regex: /(?<![A-Za-z0-9])[A-Za-z0-9]{32,64}(?![A-Za-z0-9])/g }
+  // Generic API Key - must have mix of upper/lower or numbers, avoid camelCase function names
+  { name: "Generic API Key", regex: /(?<![A-Za-z0-9_])(?=.*[A-Z])(?=.*[a-z0-9])[A-Za-z0-9]{24,64}(?![A-Za-z0-9_])|(?<![A-Za-z0-9_])(?=.*[0-9])[A-Za-z0-9]{32,64}(?![A-Za-z0-9_])/g }
 ];
