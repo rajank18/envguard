@@ -10,7 +10,13 @@ const files = execSync("git diff --cached --name-only")
   .toString()
   .trim()
   .split("\n")
-  .filter(Boolean);
+  .filter(Boolean)
+  .filter(file => {
+    // Exclude files that commonly have false positives
+    return !file.includes('package-lock.json') &&
+           !file.includes('node_modules') &&
+           !file.includes('src/detectors/');
+  });
 
 let hasLeak = false;
 

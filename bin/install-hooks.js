@@ -7,8 +7,9 @@ const hookFile = path.join(hooksDir, 'pre-commit');
 
 if (!fs.existsSync(hooksDir)) process.exit(0);
 
+const checkStagedPath = path.join(__dirname, 'check-staged.js').replace(/\\/g, '/');
 const hookContent = `#!/bin/sh
-npx envguard-check
+node "${checkStagedPath}"
 `;
 
 fs.writeFileSync(hookFile, hookContent, { mode: 0o755 });
